@@ -1,6 +1,7 @@
 ---
 title: "Supporting information for Hasegawa et al."
 author: "Shun Hasegawa"
+output: github_document
 ---
 
 This repository stores R scripts to reproduce the result presented in the manuscript below.
