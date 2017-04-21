@@ -24,4 +24,4 @@ This repository stores R scripts to reproduce the result presented in the manusc
 * **forb_data.csv**: Cover abundance data of forb species
 * **env_data.csv**: Environmental variables (soil moisture, temperature and PAR)
 * **graminoid_pfg.csv**: Table of graminoid species and corresponding plant functional types
-* **MetaData**: Description of the variables in the data above 
+* **MetaData.csv**: Description of the variables in the data above 
