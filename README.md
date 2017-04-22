@@ -25,4 +25,4 @@ File description
 -   **forb\_data.csv**: Cover abundance data of forb species
 -   **env\_data.csv**: Environmental variables (soil moisture, temperature and PAR)
 -   **graminoid\_pfg.csv**: Table of graminoid species and corresponding plant functional types
--   **MetaData**: Description of the variables in the data above
+-   **MetaData.csv**: Description of the variables in the data above
