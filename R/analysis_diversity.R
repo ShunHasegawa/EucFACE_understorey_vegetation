@@ -177,7 +177,7 @@ qqPlot(residuals((fo_h_m2)))
 # F test
 Anova(fo_h_m1, test.statistic = "F")
 Anova(fo_h_m2, test.statistic = "F")
-# no major difference, so present the first one without removing the outlier
+  # no major difference, so present the first one without removing the outlier
 
 
 # 95% confidence intervals for covariate-adjusted means
