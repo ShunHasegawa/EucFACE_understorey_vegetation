@@ -79,6 +79,7 @@ confint(lar_c4_m3, method = "boot", level = .9, nsim = 999)
 
 
 # partial regression plot
+xvars <- c("co2", "s_logmoist", "s_temp", "s_logpar")
 par(mfrow = c(2, 2))
 l_ply(xvars, function(x) visreg(lar_c4_m3, xvar = x))
 
