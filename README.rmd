@@ -24,4 +24,24 @@ This repository stores R scripts to reproduce the results presented in the manus
 * **forb_data.csv**: Cover abundance data of forb species
 * **env_data.csv**: Environmental variables (soil moisture, temperature and PAR)
 * **graminoid_pfg.csv**: Table of graminoid species and corresponding plant functional types
-* **metadata.csv**: Description of the variables in the data above 
+* **metadata.csv**: Description of the variables in the data above
+
+### Session infomation
+The results were generated under the R session as detailed below. 
+
+```{r sessioninfo, echo=FALSE, message=FALSE}
+library(plyr)
+library(dplyr)
+library(ggplot2)
+library(lme4)
+library(car)
+library(lmerTest)
+library(vegan)
+library(tidyr)
+library(lsmeans)
+library(visreg)
+library(MuMIn)
+library(LMERConvenienceFunctions)
+sessionInfo()
+```
+
