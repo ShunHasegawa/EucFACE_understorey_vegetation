@@ -78,6 +78,11 @@ confint(lar_c4_m3, method = "boot", nsim = 999)
 confint(lar_c4_m3, method = "boot", level = .9, nsim = 999)
 
 
+# partial regression plot
+par(mfrow = c(2, 2))
+l_ply(xvars, function(x) visreg(lar_c4_m3, xvar = x))
+
+
 
 
 # . level plot ------------------------------------------------------------
@@ -149,6 +154,7 @@ oldf_c3 <- romr.fnc(lar_c3_m1, data = data.frame(lar_data))
 dplyr::setdiff(oldf_c3$data0, oldf_c3$data)
   # one large outlier
 
+
 # remove the outlier
 lar_c3_m2 <- update(lar_c3_m1, data = oldf_c3$data)
 plot(lar_c3_m2)
@@ -172,3 +178,7 @@ r.squaredGLMM(lar_c3_m3)
 confint(lar_c3_m3, method = "boot", nsim = 999)
 confint(lar_c3_m3, method = "boot", level = .9, nsim = 999)
 
+
+# partial regression plot
+par(mfrow = c(2, 2))
+l_ply(xvars, function(x) visreg(lar_c3_m3, xvar = x))
