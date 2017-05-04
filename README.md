@@ -27,7 +27,8 @@ File description
 -   **graminoid\_pfg.csv**: Table of graminoid species and corresponding plant functional types
 -   **metadata.csv**: Description of the variables in the data above
 
-### Session infomation
+Session infomation
+------------------
 
 The results were generated under the R session as detailed below.
 

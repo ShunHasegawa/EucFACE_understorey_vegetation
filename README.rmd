@@ -26,7 +26,7 @@ This repository stores R scripts to reproduce the results presented in the manus
 * **graminoid_pfg.csv**: Table of graminoid species and corresponding plant functional types
 * **metadata.csv**: Description of the variables in the data above
 
-### Session infomation
+## Session infomation
 The results were generated under the R session as detailed below. 
 
 ```{r sessioninfo, echo=FALSE, message=FALSE}
