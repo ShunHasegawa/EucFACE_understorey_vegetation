@@ -61,8 +61,8 @@ allcomb4    <- as.matrix(expand.grid(1:4, 1:4, 1:4, 1:4, 1:4, 1:4))  # define al
 
 get_allperm <- function(ring_perm_list, ncomb = 99){
   
-  # ring_perm_list: a list of permutations for each ring  (e.g. perm6_ring[[10]], this contains 6 object (i.e. rings) which stores permutaitons of plots (4 permutations))
-  # ncomb         : number of combinations to be used out of 46096 in allcmob4. One can use all combinations, although it take a while
+  # ring_perm_list: a list of permutations for each ring  (e.g. perm6_ring[[10]]. This contains 6 object (i.e. rings) which stores permutaitons of plots (4 permutations))
+  # ncomb         : number of combinations to be used out of 46096 in allcmob4. One can use all combinations, although it takes a while
   
   r1_perm <- alply(allcomb4[sample(nrow(allcomb4), ncomb), ], 1, function(x){  # randomly select ncomb rows from allcomb4 and apply the function below for each row
     do.call(c, llply(1:6, function(y){
@@ -80,8 +80,7 @@ get_allperm <- function(ring_perm_list, ncomb = 99){
 }
 
 ## get all permutation; this requires computatino power
-alperms <- llply(perm6_ring, get_allperm, ncomb = 45, .parallel = TRUE,  
-                 .paropts = list(.export = "allcomb4"))                    # allcomb4 is difined outside of this function, so export it
+alperms <- llply(perm6_ring, get_allperm, ncomb = 45)
 llply(alperms, dim)
 alperms_bind <- do.call(rbind, alperms) # ncomb x 720
 any(apply(alperms_bind, 1, function(x) identical(as.vector(x), c(1:96))))  # check if this contains the original order (ie.e 1:96). if so remove
@@ -130,6 +129,7 @@ res_prc_site_co2 <- res_prc_site %>%                                  # # canoni
 
 
 # ggplot theme for prc
+theme_set(theme_bw())
 science_theme_prc <- theme(panel.border      = element_rect(color = "black"),
                            panel.grid.major  = element_blank(), 
                            panel.grid.minor  = element_blank(), 
