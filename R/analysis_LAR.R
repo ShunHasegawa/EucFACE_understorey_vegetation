@@ -78,6 +78,14 @@ confint(lar_c4_m3, method = "boot", nsim = 999)
 confint(lar_c4_m3, method = "boot", level = .9, nsim = 999)
 
 
+# get relative importance of each predictor from a models set composed of models
+# with all possible combination of each predictor
+lar_c4_m3_all <- dredge(lar_c4_m3, REML = F)
+lar_c4_m3_all
+importance(lar_c4_m3_all)
+  # ensure the total number of occurence of each predictor is equal
+
+
 # partial regression plot
 xvars <- c("co2", "s_logmoist", "s_temp", "s_logpar")
 par(mfrow = c(2, 2))
@@ -178,6 +186,13 @@ summary(lar_c3_m3)
 r.squaredGLMM(lar_c3_m3)
 confint(lar_c3_m3, method = "boot", nsim = 999)
 confint(lar_c3_m3, method = "boot", level = .9, nsim = 999)
+
+
+# get relative importance of each predictor from a models set composed of models
+# with all possible combination of each predictor
+lar_c3_m3_all <- dredge(lar_c3_m3, REML = F)
+lar_c3_m3_all
+importance(lar_c3_m3_all)
 
 
 # partial regression plot
