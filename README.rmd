@@ -15,7 +15,7 @@ This repository stores R scripts to reproduce the results presented in the manus
 ### R scripts
 * **analysis.R**: This loads required packages and data.
 * **analysis_diversity.R**: This analyses diversity indices for graminoid and forb species
-* **analysis_abundance.R**: This analyses cover abundance of *Microlaena stipoides* and *Cynodon dactylon* and total of C~3~ and C~4~ graminoids.
+* **analysis_abundance.R**: This analyses cover abundance of *Microlaena stipoides* and *Cynodon dactylon*, total abundance of C~3~ and C~4~ graminoids and C~4~:C~3~ ratios.
 * **analysis_LAR.R**: This analyses log annual change ratio (LAR) of C~3~ (LAR~C3~) and C~4~ (LAR~C4~) using multiple regression with annual soil moisture (Moist), understorey temperature (Temp) and photosynthetic active radiation(PAR).
 * **analysis_PRC.R**: This performs principal response curve analysis. The structure of permutation for repeated measurements of nested plots is also defined here.
 

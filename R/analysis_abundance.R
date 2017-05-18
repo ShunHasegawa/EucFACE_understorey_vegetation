@@ -14,7 +14,6 @@ mic_cyn <- graminoid_pfg_df %>%
   select(-pfg)
 
 
-
 # data frame for total abundance of C3 and C4
 C34_abund <- graminoid_pfg_df %>%
   group_by(pfg, year, co2, ring, plot) %>% 
@@ -24,8 +23,16 @@ C34_abund <- graminoid_pfg_df %>%
   rename(variable = pfg)
 
 
+# data frame for C4:C3 ratios
+c43_ratio <- C34_abund %>% 
+  spread(key = variable, value) %>% 
+  mutate(value    = c4_total / c3_total, 
+         variable = "c43_ratio") %>% 
+  select(variable, year, co2, ring, plot, value)
+
+
 # merge the data frames above
-abund_data <- bind_rows(mic_cyn, C34_abund)
+abund_data <- bind_rows(mic_cyn, C34_abund, c43_ratio)
 
 
 # move value in Year0 to a new column in order to use it as a covariate
@@ -37,6 +44,7 @@ abund_data_year0 <- abund_data %>%
 
 
 
+
 # analysis ----------------------------------------------------------------
 
 
@@ -44,6 +52,9 @@ abund_mcr <- filter(abund_data_year0, variable == "Microlaena.stipoides")
 abund_cyn <- filter(abund_data_year0, variable == "Cynodon.dactylon")
 abund_c3  <- filter(abund_data_year0, variable == "c3_total")
 abund_c4  <- filter(abund_data_year0, variable == "c4_total")
+ratio_c43 <- filter(abund_data_year0, variable == "c43_ratio")
+
+
 
 
 # > Microlaena --------------------------------------------------------------
@@ -201,3 +212,44 @@ c4_95CI %>%
   summarise(value = mean(lsmean)) %>%
   summarise(rr = value[co2 == "elev"] / value[co2 == "amb"] - 1)
 
+
+
+
+# > C4:C3 ratios ------------------------------------------------------------
+
+plot(log(value + .01) ~ log(value0 + .01), data = ratio_c43)
+
+
+# model
+c43r_m1 <- lmer(log(value + .01) ~ co2 * year + log(value0 + .01) + (1|ring) + (1|ring:plot) + (1|ring:year), data = ratio_c43)
+
+
+# model diagnosis
+plot(c43r_m1)
+qqPlot(residuals(c43r_m1))
+
+
+# non-normality of the data is sugested
+c43r_m2 <- update(c43r_m1, subset = -which.min(residuals(c43r_m1)))
+plot(c43r_m2)
+qqPlot(residuals(c43r_m2))
+
+
+# F test
+Anova(c43r_m1, test.statistic = "F")
+Anova(c43r_m2, test.statistic = "F")
+  # no major difference, so present the first model without removing the outliers
+
+
+# 95% confidence intervals for covariate-adjusted means
+c43r_lsmean <- lsmeans::lsmeans(c43r_m1, ~ co2 | year)
+c43r_95CI <- data.frame(summary(c43r_lsmean)) %>% 
+  mutate_each(funs(exp(.) - 0.01), lsmean, lower.CL, upper.CL)
+c43r_95CI
+
+
+# CO2 response ratios (RR) on covariate-adjusted means
+c43r_95CI %>% 
+  group_by(co2) %>% 
+  summarise(value = mean(lsmean)) %>%
+  summarise(rr = value[co2 == "elev"] / value[co2 == "amb"] - 1)

@@ -15,7 +15,7 @@ File description
 
 -   **analysis.R**: This loads required packages and data.
 -   **analysis\_diversity.R**: This analyses diversity indices for graminoid and forb species
--   **analysis\_abundance.R**: This analyses cover abundance of *Microlaena stipoides* and *Cynodon dactylon* and total of C<sub>3</sub> and C<sub>4</sub> graminoids.
+-   **analysis\_abundance.R**: This analyses cover abundance of *Microlaena stipoides* and *Cynodon dactylon*, total abundance of C<sub>3</sub> and C<sub>4</sub> graminoids and C<sub>4</sub>:C<sub>3</sub> ratios.
 -   **analysis\_LAR.R**: This analyses log annual change ratio (LAR) of C<sub>3</sub> (LAR<sub>C3</sub>) and C<sub>4</sub> (LAR<sub>C4</sub>) using multiple regression with annual soil moisture (Moist), understorey temperature (Temp) and photosynthetic active radiation(PAR).
 -   **analysis\_PRC.R**: This performs principal response curve analysis. The structure of permutation for repeated measurements of nested plots is also defined here.
 
