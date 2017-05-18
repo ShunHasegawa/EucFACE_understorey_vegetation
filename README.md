@@ -2,7 +2,7 @@ Supporting information for Hasegawa et al.
 ================
 Shun Hasegawa
 
-This repository stores R scripts to reproduce the results presented in the manuscript below.
+This repository stores R scripts to reproduce the results presented in the manuscript below. The raw data are available in supporting information (Tables S2-S5).
 
 -   Article title: Elevated CO<sub>2</sub> concentrations reduce C<sub>4</sub> abundance and decrease diversity of understorey plant community in a grassy-*Eucalyptus* woodland
 -   Authors: Shun Hasegawa, Juan Piñeiro, Raúl Ochoa-Hueso, Kirk L. Barnett, Anthony M. Haigh, Paul D. Rymer, Sally A. Power
@@ -21,10 +21,10 @@ File description
 
 ### Data
 
--   **graminoid\_data.csv**: Cover abundance data of graminoid species
--   **forb\_data.csv**: Cover abundance data of forb species
--   **env\_data.csv**: Environmental variables (soil moisture, temperature and PAR)
--   **graminoid\_pfg.csv**: Table of graminoid species and corresponding plant functional types
+-   **Table\_S2\_graminoid\_data.csv**: Cover abundance data of graminoid species
+-   **Table\_S3\_forb\_data.csv**: Cover abundance data of forb species
+-   **Table\_S4\_env\_data.csv**: Environmental variables (soil moisture, temperature and PAR)
+-   **Table\_S5\_graminoid\_pfg.csv**: Table of graminoid species and corresponding plant functional types
 -   **metadata.csv**: Description of the variables in the data above
 
 Session infomation
