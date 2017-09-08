@@ -2,7 +2,7 @@ Supporting information for Hasegawa et al.
 ================
 Shun Hasegawa
 
-This repository stores R scripts to reproduce the results presented in the manuscript below. The raw data will be made publicly available upon accetance of the manuscript.
+This repository stores R scripts to reproduce the results presented in the manuscript below. The raw data will be made publicly available upon acceptance of the manuscript.
 
 -   Article title: Elevated CO<sub>2</sub> concentrations reduce C<sub>4</sub> abundance and decrease diversity of understorey plant community in a grassy-*Eucalyptus* woodland
 -   Authors: Shun Hasegawa, Juan Piñeiro, Raúl Ochoa-Hueso, Kirk L. Barnett, Anthony M. Haigh, Paul D. Rymer, Sally A. Power
