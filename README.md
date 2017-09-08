@@ -2,7 +2,7 @@ Supporting information for Hasegawa et al.
 ================
 Shun Hasegawa
 
-This repository stores R scripts to reproduce the results presented in the manuscript below. The raw data are available in supporting information (Tables S2-S5).
+This repository stores R scripts to reproduce the results presented in the manuscript below. The raw data will be made publicly available upon accetance of the manuscript.
 
 -   Article title: Elevated CO<sub>2</sub> concentrations reduce C<sub>4</sub> abundance and decrease diversity of understorey plant community in a grassy-*Eucalyptus* woodland
 -   Authors: Shun Hasegawa, Juan Piñeiro, Raúl Ochoa-Hueso, Kirk L. Barnett, Anthony M. Haigh, Paul D. Rymer, Sally A. Power
@@ -15,16 +15,17 @@ File description
 
 -   **analysis.R**: This loads required packages and data.
 -   **analysis\_diversity.R**: This analyses diversity indices for graminoid and forb species
--   **analysis\_abundance.R**: This analyses cover abundance of *Microlaena stipoides* and *Cynodon dactylon*, total abundance of C<sub>3</sub> and C<sub>4</sub> graminoids and C<sub>4</sub>:C<sub>3</sub> ratios.
--   **analysis\_LAR.R**: This analyses log annual rates of change in C<sub>3</sub> and C<sub>4</sub> using multiple regression with annual soil moisture (Moist), understorey temperature (Temp) and photosynthetic active radiation(PAR).
--   **analysis\_PRC.R**: This performs principal response curve analysis. The structure of permutation for repeated measurements of nested plots is also defined here.
+-   **analysis\_abundance.R**: This analyses cover abundance of dominant and subordinate C<sub>4</sub> and C<sub>3</sub> graminoids, C<sub>4</sub>:C<sub>3</sub> ratios and subordinate:dominant ratios.
+-   **analysis\_LAR.R**: This analyses log annual rates of change in C<sub>3</sub> and C<sub>4</sub> for each of dominant and subordinate species using multiple regression with annual soil moisture (Moist), understorey temperature (Temp) and photosynthetic active radiation(PAR).
+-   **analysis\_C43r\_soilNP.R**: This analyses C<sub>4</sub>:C<sub>3</sub> ratios using multiple regression with soil N and P availability.
 
 ### Data
 
 -   **Table\_S2\_graminoid\_data.csv**: Cover abundance data of graminoid species
 -   **Table\_S3\_forb\_data.csv**: Cover abundance data of forb species
 -   **Table\_S4\_env\_data.csv**: Environmental variables (soil moisture, temperature and PAR)
--   **Table\_S5\_graminoid\_pfg.csv**: Table of graminoid species and corresponding plant functional types
+-   **Table\_S5\_soil\_data.csv**: Plant accessible nutrients (ammonium, nitrate and phosphate)
+-   **Table\_S6\_graminoid\_pfg.csv**: Table of graminoid species and corresponding plant functional types
 -   **metadata.csv**: Description of the variables in the data above
 
 Session infomation
@@ -34,7 +35,7 @@ The results were generated under the R session as detailed below.
 
     ## R version 3.3.2 (2016-10-31)
     ## Platform: x86_64-apple-darwin13.4.0 (64-bit)
-    ## Running under: macOS Sierra 10.12.4
+    ## Running under: macOS Sierra 10.12.6
     ## 
     ## locale:
     ## [1] en_GB.UTF-8/en_GB.UTF-8/en_GB.UTF-8/C/en_GB.UTF-8/en_GB.UTF-8
@@ -60,8 +61,8 @@ The results were generated under the R session as detailed below.
     ## [13] stats4_3.3.2        spam_1.4-0          evaluate_0.10      
     ## [16] coda_0.18-1         multcomp_1.4-5      minqa_1.2.4        
     ## [19] data.table_1.9.7    SparseM_1.7         nloptr_1.0.4       
-    ## [22] rpart_4.1-10        rmarkdown_1.4       splines_3.3.2      
-    ## [25] stringr_1.1.0       foreign_0.8-67      htmlwidgets_0.7    
+    ## [22] rpart_4.1-10        rmarkdown_1.6       splines_3.3.2      
+    ## [25] stringr_1.2.0       foreign_0.8-67      htmlwidgets_0.7    
     ## [28] munsell_0.4.3       shiny_0.13.2        httpuv_1.3.3       
     ## [31] mgcv_1.8-17         htmltools_0.3.5     nnet_7.3-12        
     ## [34] tibble_1.1          gridExtra_2.2.1     Hmisc_3.17-4       

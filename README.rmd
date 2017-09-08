@@ -4,7 +4,7 @@ author: "Shun Hasegawa"
 output: github_document
 ---
 
-This repository stores R scripts to reproduce the results presented in the manuscript below. The raw data are available in supporting information (Tables S2-S5).
+This repository stores R scripts to reproduce the results presented in the manuscript below. The raw data will be made publicly available upon accetance of the manuscript.
 
 * Article title: Elevated CO~2~ concentrations reduce C~4~ abundance and decrease diversity of understorey plant community in a grassy-*Eucalyptus* woodland
 * Authors: Shun Hasegawa, Juan Piñeiro, Raúl Ochoa-Hueso, Kirk L. Barnett, Anthony M. Haigh, Paul D. Rymer, Sally A. Power
@@ -15,15 +15,18 @@ This repository stores R scripts to reproduce the results presented in the manus
 ### R scripts
 * **analysis.R**: This loads required packages and data.
 * **analysis_diversity.R**: This analyses diversity indices for graminoid and forb species
-* **analysis_abundance.R**: This analyses cover abundance of *Microlaena stipoides* and *Cynodon dactylon*, total abundance of C~3~ and C~4~ graminoids and C~4~:C~3~ ratios.
-* **analysis_LAR.R**: This analyses log annual rates of change in C~3~ and C~4~ using multiple regression with annual soil moisture (Moist), understorey temperature (Temp) and photosynthetic active radiation(PAR).
-* **analysis_PRC.R**: This performs principal response curve analysis. The structure of permutation for repeated measurements of nested plots is also defined here.
+* **analysis_abundance.R**: This analyses cover abundance of dominant and subordinate C~4~ and C~3~ graminoids, C~4~:C~3~ ratios and subordinate:dominant ratios.
+* **analysis_LAR.R**: This analyses log annual rates of change in C~3~ and C~4~ for each of dominant and subordinate species using multiple regression with annual soil moisture (Moist), understorey temperature (Temp) and photosynthetic active radiation(PAR).
+* **analysis_C43r_soilNP.R**: This analyses C~4~:C~3~ ratios using multiple regression with soil N and P availability.
+
+
 
 ### Data
-* **Table_S2_graminoid_data.csv**: Cover abundance data of graminoid species
-* **Table_S3_forb_data.csv**: Cover abundance data of forb species
-* **Table_S4_env_data.csv**: Environmental variables (soil moisture, temperature and PAR)
-* **Table_S5_graminoid_pfg.csv**: Table of graminoid species and corresponding plant functional types
+* **graminoid_data.csv**: Cover abundance data of graminoid species
+* **forb_data.csv**: Cover abundance data of forb species
+* **env_data.csv**: Environmental variables (soil moisture, temperature and PAR)
+* **soil_data.csv**: Plant accessible nutrients (ammonium, nitrate and phosphate)
+* **graminoid_pfg.csv**: Table of graminoid species and corresponding plant functional types
 * **metadata.csv**: Description of the variables in the data above
 
 ## Session infomation
