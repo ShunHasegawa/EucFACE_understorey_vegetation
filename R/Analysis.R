@@ -12,7 +12,7 @@ library(tidyr)
 library(lsmeans)
 library(visreg)
 library(MuMIn)
-library(LMERConvenienceFunctions)
+
 
 
 
@@ -25,7 +25,8 @@ site_data      <- graminoid_data[ ,site_var]                    # data frame for
 SppName_gram   <- setdiff(names(graminoid_data), site_var)      # graminoid species names
 SppName_forb   <- setdiff(names(forb_data), site_var)           # forb species names
 env_data       <- read.csv("Data/Table_S4_env_data.csv")        # environmental variables (moisture, temperature and PAR)
-sp_pfg         <- read.csv("Data/Table_S5_graminoid_pfg.csv")   # graminoid species and and their corresponding plant functional groups
+soil_data      <- read.csv("Data/Table_S5_soil_data.csv")       # soil nutrient data (nitrate, ammonium and phosphoate)
+sp_pfg         <- read.csv("Data/Table_S6_graminoid_pfg.csv")   # graminoid species and and their corresponding plant functional groups
 
 
 
