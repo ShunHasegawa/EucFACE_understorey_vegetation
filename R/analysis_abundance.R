@@ -5,7 +5,9 @@
 
 graminoid_pfg_df <- graminoid_data %>% 
   gather(key = variable, value = value, one_of(SppName_gram)) %>% 
-  left_join(sp_pfg)
+  left_join(sp_pfg) %>%
+  mutate(ring = as.character(ring), 
+         plot = as.character(plot))
 
 
 # > classify into dominance types: Dominant/subordinate/transient -----------
