@@ -18,11 +18,11 @@ env_data.csv,Temp,degree celcious,Annual mean of understorey temperature at 2 m 
 env_data.csv,PAR,micromol s-1 m-2,Annual mean of understorey photosynthetically active radiation at 2 m above the ground
 graminoid_pfg.csv,variable,,Species names
 graminoid_pfg.csv,pfg,,Plant functional groups: C3 and C4
-,,,
-,,,
-,,,
-,,,
-,,,
+soil_data.csv,year,,"Corresponding survey years for annual means of soil nutrients. The means between November and subsequent February in 2013, 2014, 2015 and 2016 are for the surveys in Year0, Year1, Year2 and Year3, respectively. Also see Year for graminoid_data.csv"
+soil_data.csv,ring,,See for graminoid_data.csv
+soil_data.csv,nitrate,ng cm-2 d-1,plant accessible nitrate meaured using ion exchange resin membrane
+soil_data.csv,ammonium,ng cm-2 d-1,plant accessible ammonium meaured using ion exchange resin membrane
+soil_data.csv,phosphate,ng cm-2 d-1,plant accessible phosphate meaured using ion exchange resin membrane
 ,,,
 ,,,
 ,,,
