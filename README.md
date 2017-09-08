@@ -21,11 +21,11 @@ File description
 
 ### Data
 
--   **Table\_S2\_graminoid\_data.csv**: Cover abundance data of graminoid species
--   **Table\_S3\_forb\_data.csv**: Cover abundance data of forb species
--   **Table\_S4\_env\_data.csv**: Environmental variables (soil moisture, temperature and PAR)
--   **Table\_S5\_soil\_data.csv**: Plant accessible nutrients (ammonium, nitrate and phosphate)
--   **Table\_S6\_graminoid\_pfg.csv**: Table of graminoid species and corresponding plant functional types
+-   **graminoid\_data.csv**: Cover abundance data of graminoid species
+-   **forb\_data.csv**: Cover abundance data of forb species
+-   **env\_data.csv**: Environmental variables (soil moisture, temperature and PAR)
+-   **soil\_data.csv**: Plant accessible nutrients (ammonium, nitrate and phosphate)
+-   **graminoid\_pfg.csv**: Table of graminoid species and corresponding plant functional types
 -   **metadata.csv**: Description of the variables in the data above
 
 Session infomation
