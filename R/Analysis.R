@@ -12,7 +12,7 @@ library(tidyr)
 library(lsmeans)
 library(visreg)
 library(MuMIn)
-
+library(LMERConvenienceFunctions)
 
 
 
@@ -33,7 +33,7 @@ sp_pfg         <- read.csv("Data/Table_S6_graminoid_pfg.csv")   # graminoid spec
 
 # analysis ----------------------------------------------------------------
 
-source("R/analysis_diversity.R")  # analysis on diversity indices
-source("R/analysis_abundance.R")  # analysis on abundance of Microlaena, Cynodon, and total C3 and C4
-source("R/analysis_LAR.R")        # multiple regression analysis on log annual change ratios
-source("R/analysis_PRC.R")        # multivariate analysis with principal response curve
+source("R/analysis_diversity.R")    # analysis on diversity indices
+source("R/analysis_abundance.R")    # analysis on abundance of C3 and C4 graminoids for dominant and subordinate spp
+source("R/analysis_LAR.R")          # multiple regression analysis on log annual rates of change
+source("R/analysis_C43r_soilNP.R")  # multiple regression analysis on C4:C3 ratios and soil nutrients
