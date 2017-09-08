@@ -3,4 +3,8 @@
 .RData
 .DS_Store
 .Rapp.history
-Data/Table*
+Data/graminoid_data.csv
+Data/forb_data.csv
+Data/env_data.csv
+Data/soil_data.csv
+Data/graminoid_pfg.csv
