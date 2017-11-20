@@ -82,7 +82,10 @@ graminoid_DS_sum <- graminoid_DS %>%
   summarise(value = sum(value)) %>% 
   ungroup() %>% 
   mutate(variable = paste(type, pfg, sep = "_")) %>% 
-  select(variable, year, ring, co2, plot, value)
+  select(variable, year, ring, co2, plot, value) %>% 
+  group_by(variable, year, ring, co2) %>% 
+  summarise(value = mean(value)) %>% 
+  ungroup()
 
 
 # df for subordinate:dominant ratios
@@ -93,7 +96,10 @@ graminoid_DS_ratio <- graminoid_DS %>%
   spread(key = type, value = value) %>% 
   mutate(value = S / D, 
          variable = "ds_ratio") %>% 
-  select(variable, year, ring, co2, plot, value)
+  select(variable, year, ring, co2, plot, value) %>% 
+  group_by(variable, year, ring, co2) %>% 
+  summarise(value = mean(value)) %>% 
+  ungroup()
 
 
 # data frame for C4:C3 ratios (incl. transient spp)
@@ -104,7 +110,10 @@ graminoid_c43_ratio <- graminoid_pfg_df %>%
   spread(key = pfg, value) %>% 
   mutate(value    = c4 / c3, 
          variable = "c43_ratio") %>% 
-  select(variable, year, co2, ring, plot, value)
+  select(variable, year, co2, ring, plot, value) %>% 
+  group_by(variable, year, co2, ring) %>% 
+  summarise(value = mean(value)) %>% 
+  ungroup()
 
 
 # merge the data frames above
@@ -114,9 +123,9 @@ abund_data <- bind_rows(graminoid_DS_sum, graminoid_DS_ratio, graminoid_c43_rati
 # move value in Year0 to a new column in order to use it as a covariate
 abund_data_year0 <- abund_data %>%
   filter(year == "Year0") %>%
-  select(ring, plot, value, variable) %>%
+  select(ring, value, variable) %>%
   rename(value0 = value) %>% 
-  left_join(filter(abund_data, year != "Year0"), by = c("ring", "plot", "variable")) 
+  left_join(filter(abund_data, year != "Year0"), by = c("ring", "variable")) 
 
 
 
@@ -139,7 +148,7 @@ ratio_DS  <- filter(abund_data_year0, variable == "ds_ratio")
 
 # model
 plot(value ~ value0, data = abund_dc3)
-dc3_m1 <- lmer(value ~ co2 * year + value0 + (1|ring) + (1|ring:plot) + (1|ring:year), abund_dc3)
+dc3_m1 <- lmer(value ~ co2 * year + value0 + (1|ring), abund_dc3)
 
 
 # model diagnosis
@@ -147,15 +156,8 @@ plot(dc3_m1)
 qqPlot(resid(dc3_m1))
 
 
-# non-normality of the data is suggested
-dc3_m2 <- update(dc3_m1, subset = -which.min(resid(dc3_m1)))
-plot(dc3_m2)
-qqPlot(resid(dc3_m2))
-
 # F test
 Anova(dc3_m1, test.statistic = "F")
-Anova(dc3_m2, test.statistic = "F")
-# no difference so present the first one without removing the outliers
 
 
 # 95% confidence intervals for covariate-adjusted means
@@ -174,8 +176,8 @@ dc3_95CI %>%
 # > dominant c4 -----------------------------------------------------------
 
 # model
-plot(sqrt(value + 1) ~ sqrt(value0 + 1), data = abund_dc4)
-dc4_m1 <- lmer(sqrt(value + 1) ~ co2 * year + sqrt(value0 + 1) + (1|ring) + (1|ring:plot) + (1|ring:year), abund_dc4)
+plot(sqrt(value) ~ sqrt(value0), data = abund_dc4)
+dc4_m1 <- lmer(sqrt(value) ~ co2 * year + sqrt(value0) + (1|ring), abund_dc4)
 
 
 # model diagnosis
@@ -188,16 +190,15 @@ Anova(dc4_m1, test.statistic = "F")
 
 
 # 95% confidence intervals for covariate-adjusted means
-dc4_lsmean <- lsmeans::lsmeans(dc4_m1, ~ co2 | year)
-dc4_95CI   <- data.frame(summary(dc4_lsmean)) %>% 
-  mutate_each(funs(.^2 - 1), lsmean, lower.CL, upper.CL)
+dc4_lsmean <- lsmeans::lsmeans(dc4_m1, ~ co2 | year, type = "response")
+dc4_95CI   <- data.frame(summary(dc4_lsmean))
 dc4_95CI
 
 
 # CO2 response ratios (RR) on covariate-adjusted means
 dc4_95CI %>% 
   group_by(co2) %>% 
-  summarise(value = mean(lsmean)) %>%
+  summarise(value = mean(response)) %>%
   summarise(rr = value[co2 == "elev"] / value[co2 == "amb"] - 1)
 
 
@@ -206,7 +207,7 @@ dc4_95CI %>%
 
 # model
 plot(log(value + 1)  ~ log(value0 + 1), data = abund_sc3)
-sc3_m1 <- lmer(log(value + 1) ~ co2 * year + log(value0 + 1) + (1|ring) + (1|ring:plot) + (1|ring:year), abund_sc3)
+sc3_m1 <- lmer(log(value + 1) ~ co2 * year + log(value0 + 1) + (1|ring), abund_sc3)
 
 
 # model diagnosis
@@ -237,8 +238,8 @@ sc3_95CI %>%
 # > subordinate c4 --------------------------------------------------------
 
 # model
-plot(sqrt(value + 1) ~ sqrt(value0 + 1), abund_sc4)
-sc4_m1 <- lmer(sqrt(value + 1) ~ co2 * year + sqrt(value0 + 1) + (1|ring) + (1|ring:plot) + (1|ring:year), abund_sc4)
+plot(sqrt(value) ~ sqrt(value0), abund_sc4)
+sc4_m1 <- lmer(sqrt(value) ~ co2 * year + sqrt(value0) + (1|ring), abund_sc4)
 
 
 # model diagnosis
@@ -251,16 +252,15 @@ Anova(sc4_m1, test.statistic = "F")
 
 
 # 95% confidence intervals for covariate-adjusted means
-sc4_lsmean <- lsmeans::lsmeans(sc4_m1, ~ co2 | year)
-sc4_95CI   <- data.frame(summary(sc4_lsmean)) %>% 
-  mutate_each(funs(.^2 - 1), lsmean, lower.CL, upper.CL)
+sc4_lsmean <- lsmeans::lsmeans(sc4_m1, ~ co2 | year, type = "response")
+sc4_95CI   <- data.frame(summary(sc4_lsmean))
 sc4_95CI
 
 
 # CO2 response ratios (RR) on covariate-adjusted means
 sc4_95CI %>% 
   group_by(co2) %>% 
-  summarise(value = mean(lsmean)) %>%
+  summarise(value = mean(response)) %>%
   summarise(rr = value[co2 == "elev"] / value[co2 == "amb"] - 1)
 
 
@@ -268,11 +268,11 @@ sc4_95CI %>%
 
 # > C4:C3 ratios ------------------------------------------------------------
 
-plot(log(value + .01) ~ log(value0 + .01), data = ratio_c43)
+plot(log(value) ~ log(value0), data = ratio_c43)
 
 
 # model
-c43r_m1 <- lmer(I(log(value + .01)) ~ co2 * year + I(log(value0 + .01)) + (1|ring) + (1|ring:plot) + (1|ring:year), data = ratio_c43)
+c43r_m1 <- lmer(log(value) ~ co2 * year + log(value0) + (1|ring), data = ratio_c43)
 
 
 # model diagnosis
@@ -280,29 +280,20 @@ plot(c43r_m1)
 qqPlot(residuals(c43r_m1))
 
 
-# non-normality of the data is sugested
-c43r_m2 <- update(c43r_m1, subset = -order(resid(c43r_m1))[1:2])
-plot(c43r_m2)
-qqPlot(residuals(c43r_m2))
-
-
 # F test
 Anova(c43r_m1, test.statistic = "F")
-Anova(c43r_m2, test.statistic = "F")
-# no major difference, so present the first model without removing the outliers
 
 
 # 95% confidence intervals for covariate-adjusted means
-c43r_lsmean <- lsmeans::lsmeans(c43r_m1, ~ co2 | year)
-c43r_95CI   <- data.frame(summary(c43r_lsmean)) %>% 
-  mutate_each(funs(exp(.) - 0.01), lsmean, lower.CL, upper.CL)
+c43r_lsmean <- lsmeans::lsmeans(c43r_m1, ~ co2 | year, type = "response")
+c43r_95CI   <- data.frame(summary(c43r_lsmean))
 c43r_95CI
 
 
 # CO2 response ratios (RR) on covariate-adjusted means
 c43r_95CI %>% 
   group_by(co2) %>% 
-  summarise(value = mean(lsmean)) %>%
+  summarise(value = mean(response)) %>%
   summarise(rr = value[co2 == "elev"] / value[co2 == "amb"] - 1)
 
 
@@ -311,8 +302,8 @@ c43r_95CI %>%
 # > subordinate: dominant ratio -------------------------------------------
 
 # model
-plot(sqrt(value) ~ sqrt(value0), ratio_DS)
-sd_m1 <- lmer(sqrt(value) ~ co2 * year + sqrt(value0) + (1|ring) + (1|ring:plot) + (1|ring:year), data = ratio_DS)
+plot(logit(value) ~ logit(value0), ratio_DS)
+sd_m1 <- lmer(logit(value) ~ co2 * year + logit(value0) + (1|ring), data = ratio_DS)
 
 
 # model diagnosis
@@ -325,15 +316,14 @@ Anova(sd_m1, test.statistic = "F")
 
 
 # 95% confidence intervals for covariate-adjusted means
-sdr_lsmean <- lsmeans::lsmeans(sd_m1, ~ co2 | year)
-sdr_95CI   <- data.frame(summary(sdr_lsmean)) %>% 
-  mutate_each(funs(.^2), lsmean, lower.CL, upper.CL)
+sdr_lsmean <- lsmeans::lsmeans(sd_m1, ~ co2 | year, type = "response")
+sdr_95CI   <- data.frame(summary(sdr_lsmean))
 sdr_95CI
 
 
 # CO2 response ratios (RR) on covariate-adjusted means
 sdr_95CI %>% 
   group_by(co2) %>% 
-  summarise(value = mean(lsmean)) %>%
+  summarise(value = mean(response)) %>%
   summarise(rr = value[co2 == "elev"] / value[co2 == "amb"] - 1)
 
