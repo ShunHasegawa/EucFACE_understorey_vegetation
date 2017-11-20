@@ -1,31 +1,48 @@
 
 # prepare data frame ------------------------------------------------------
 
-# merge soil nutrient data and ring means of C4:C3 ratio data
+# merge soil nutrient and environmental data with ring means of C4:C3 ratio data
 soil_data <- soil_data %>% 
   mutate(ring = as.character(ring),
+         year = as.character(year),
          nitrogen = nitrate + ammonium)
 
-c43r_soi <- graminoid_pfg_df %>% 
-  group_by(year, co2, ring, pfg) %>% 
-  summarise(value = sum(value)) %>%
-  ungroup() %>% 
-  spread(pfg, value) %>% 
-  mutate(c43_r = c4 / c3) %>% 
-  left_join(soil_data) %>% 
-  mutate(s_c43_r  = scale(log(c43_r + .1))[, 1],    # Z-standardize for multiple regression
+env_data <- env_data %>% 
+  mutate(ring = as.character(ring),
+         year = as.character(year))
+
+ratio_c43 <- ratio_c43 %>% 
+  mutate(ring = as.character(ring),
+         year = as.character(year))
+
+c43r_soil <- ratio_c43 %>% 
+  rename(c43_r = value) %>% 
+  left_join(soil_data, by = c("year", "ring")) %>% 
+  left_join(env_data, by = c("year", "ring")) %>% 
+  mutate(s_c43_r  = scale(log(c43_r))[, 1],    # Z-standardize for multiple regression
          s_n      = scale(log(nitrogen))[, 1],
-         s_p      = scale(log(phosphate))[, 1])
-  
+         s_p      = scale(log(phosphate))[, 1],
+         s_moist  = scale(Moist)[, 1],
+         s_temp   = scale(Temp)[, 1],
+         s_par    = scale(PAR)[, 1]) %>% 
+  arrange(year, ring)
+
 
 
 
 # anlaysis ----------------------------------------------------------------
 
 
-plot(s_c43_r ~ s_n, c43r_soi)
-plot(s_c43_r ~ s_p, c43r_soi)
-c43_soil_m1 <- lmer(s_c43_r ~ s_n + s_p + (1|ring) + (1|year), data = c43r_soi)
+plot(s_c43_r ~ s_n, c43r_soil)
+plot(s_c43_r ~ s_p, c43r_soil)
+
+
+# check multicollinearity
+car::vif(lm(s_c43_r ~ s_n + s_p + s_moist + s_temp + s_par, data = c43r_soil))
+
+
+# model
+c43_soil_m1 <- lmer(s_c43_r ~ s_n + s_p + s_moist + s_temp + s_par + (1|ring) + (1|year), data = c43r_soil)
 
 
 # model diagnosis
@@ -37,7 +54,7 @@ qqPlot(resid(c43_soil_m1))
 summary(c43_soil_m1)
 r.squaredGLMM(c43_soil_m1)
 confint(c43_soil_m1, method = "boot", nsim = 999)
-confint(c43_soil_m1, method = "boot", level = .9, nsim = 999)
+confint(c43_soil_m1, method = "boot", nsim = 999, level = .9)
 
 
 # get relative importance of each predictor from a models set composed of models

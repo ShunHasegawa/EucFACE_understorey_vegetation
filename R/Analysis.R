@@ -33,7 +33,7 @@ sp_pfg         <- read.csv("Data/graminoid_pfg.csv")   # graminoid species and a
 
 # analysis ----------------------------------------------------------------
 
+options(na.action = "na.fail")      # change na.action setting for MuMIN::dredge
 source("R/analysis_diversity.R")    # analysis on diversity indices
 source("R/analysis_abundance.R")    # analysis on abundance of C3 and C4 graminoids for dominant and subordinate spp
-source("R/analysis_LAR.R")          # multiple regression analysis on log annual rates of change
 source("R/analysis_C43r_soilNP.R")  # multiple regression analysis on C4:C3 ratios and soil nutrients
