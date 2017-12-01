@@ -54,7 +54,6 @@ qqPlot(resid(c43_soil_m1))
 summary(c43_soil_m1)
 r.squaredGLMM(c43_soil_m1)
 confint(c43_soil_m1, method = "boot", nsim = 999)
-confint(c43_soil_m1, method = "boot", nsim = 999, level = .9)
 
 
 # get relative importance of each predictor from a models set composed of models
