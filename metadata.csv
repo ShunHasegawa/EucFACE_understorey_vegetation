@@ -23,17 +23,3 @@ soil_data.csv,ring,,See for graminoid_data.csv
 soil_data.csv,nitrate,ng cm-2 d-1,Plant accessible nitrate meaured using ion exchange resin membrane
 soil_data.csv,ammonium,ng cm-2 d-1,Plant accessible ammonium meaured using ion exchange resin membrane
 soil_data.csv,phosphate,ng cm-2 d-1,Plant accessible phosphate meaured using ion exchange resin membrane
-,,,
-,,,
-,,,
-,,,
-,,,
-,,,
-,,,
-,,,
-,,,
-,,,
-,,,
-,,,
-,Note,,
-,"Months  to be used to compute yearly mean. Overlapped months between years are used. Valuse measured on shown months in a year before are used. Ex. Jun Year1 is from Jun 2012, Dec Year2 is from Dec 2013, but Jan is the same year. Jan Year 2 is from Jan 2014.",,
