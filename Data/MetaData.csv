@@ -3,7 +3,7 @@ graminoid_data.csv,year,,"Survey year: Year0 was conducted in September and Dece
 graminoid_data.csv,co2,,CO2 treatment: ambient (amb) and elevated CO2 (elev)
 graminoid_data.csv,ring,,FACE ring
 graminoid_data.csv,plot,,Plots established within each ring
-graminoid_data.csv,species names,count plot-1,the number of 10 x 10 cm cells where the species were present per plot (2 x 2 m)
+graminoid_data.csv,species names,count plot-1,The number of 10 x 10 cm cells where the species were present per plot (2 x 2 m)
 forb_data.csv,year,,See for graminoid_data.csv
 forb_data.csv,co2,,See for graminoid_data.csv
 forb_data.csv,ring,,See for graminoid_data.csv
@@ -20,9 +20,9 @@ graminoid_pfg.csv,variable,,Species names
 graminoid_pfg.csv,pfg,,Plant functional groups: C3 and C4
 soil_data.csv,year,,"Corresponding survey years for annual means of soil nutrients. The means between November and subsequent February in 2013, 2014, 2015 and 2016 are for the surveys in Year0, Year1, Year2 and Year3, respectively. Also see Year for graminoid_data.csv"
 soil_data.csv,ring,,See for graminoid_data.csv
-soil_data.csv,nitrate,ng cm-2 d-1,plant accessible nitrate meaured using ion exchange resin membrane
-soil_data.csv,ammonium,ng cm-2 d-1,plant accessible ammonium meaured using ion exchange resin membrane
-soil_data.csv,phosphate,ng cm-2 d-1,plant accessible phosphate meaured using ion exchange resin membrane
+soil_data.csv,nitrate,ng cm-2 d-1,Plant accessible nitrate meaured using ion exchange resin membrane
+soil_data.csv,ammonium,ng cm-2 d-1,Plant accessible ammonium meaured using ion exchange resin membrane
+soil_data.csv,phosphate,ng cm-2 d-1,Plant accessible phosphate meaured using ion exchange resin membrane
 ,,,
 ,,,
 ,,,
