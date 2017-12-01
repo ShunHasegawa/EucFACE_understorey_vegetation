@@ -3,7 +3,7 @@
 
 
 # compute diversity indices
-graminoid_diversity <- site_data %>% 
+graminoid_diversity_ind <- site_data %>% 
   mutate(H = diversity(graminoid_data[, SppName_gram]),  # Shannon's index
          S = specnumber(graminoid_data[, SppName_gram]), # number of spp
          J = H/log(S)) %>%                               # Pielou's evenness
@@ -12,7 +12,7 @@ graminoid_diversity <- site_data %>%
   ungroup()
 
 
-forb_diversity <- site_data %>% 
+forb_diversity_ind <- site_data %>% 
   mutate(H = diversity(forb_data[ , SppName_forb]),
          S = specnumber(forb_data[ , SppName_forb]),
          J = H/log(S)) %>% 
@@ -23,7 +23,7 @@ forb_diversity <- site_data %>%
 
 
 # Move Year0 value to a new column to be used as covariate for the analysis
-diversity_list <- list(graminoid = graminoid_diversity, forb = forb_diversity)
+diversity_list <- list(graminoid = graminoid_diversity_ind, forb = forb_diversity_ind)
 
 
 diversity_year0_list <- llply(diversity_list, function(x){
@@ -49,7 +49,7 @@ forb_diversity      <- diversity_year0_list$forb
 # analysis ----------------------------------------------------------------
 
 
-# > Graminoid -------------------------------------------------------------
+# Graminoid -------------------------------------------------------------
 
 graminoid_h <- filter(graminoid_diversity, variable == "H")
 graminoid_j <- filter(graminoid_diversity, variable == "J")
@@ -147,7 +147,7 @@ data.frame(summary(gr_s_lsmean)) %>%
 
 
 
-# > Forb --------------------------------------------------------------------
+# Forb --------------------------------------------------------------------
 
 
 forb_h <- filter(forb_diversity, variable == "H")
@@ -183,6 +183,22 @@ data.frame(summary(fo_h_lsmean)) %>%
   summarise(rr = value[co2 == "elev"] / value[co2 == "amb"] - 1)
 
 
+# . pre- & post-CO2 ------------------------------------------------------
+
+
+# pre-CO2
+fo_h_pre_m1  <- lm(H ~ co2, data = forb_diversity_ind, subset = year == "Year0")
+plot(fo_h_pre_m1)
+Anova(fo_h_pre_m1, test.statistic = "F")
+
+
+# post-CO2
+fo_h_post_m1 <- lmer(H ~ co2 * year + (1|ring), data = forb_diversity_ind, subset = year != "Year0")
+plot(fo_h_post_m1)
+qqPlot(residuals(fo_h_post_m1))
+Anova(fo_h_post_m1, test.statistic = "F")
+
+
 
 
 # . J -----------------------------------------------------------------------
@@ -214,6 +230,24 @@ data.frame(summary(fo_j_lsmean)) %>%
 
 
 
+# . pre- & post-CO2 ------------------------------------------------------
+
+
+# pre-CO2
+fo_j_pre_m1  <- lm(J ~ co2, data = forb_diversity_ind, subset = year == "Year0")
+plot(fo_j_pre_m1)
+Anova(fo_j_pre_m1, test.statistic = "F")
+
+
+# post-CO2
+fo_j_post_m1 <- lmer(J ~ co2 * year + (1|ring), data = forb_diversity_ind, subset = year != "Year0")
+plot(fo_j_post_m1)
+qqPlot(residuals(fo_j_post_m1))
+Anova(fo_j_post_m1, test.statistic = "F")
+
+
+
+
 
 # . S ---------------------------------------------------------------------
 
@@ -241,4 +275,19 @@ data.frame(summary(fo_s_lsmean)) %>%
   group_by(co2) %>% 
   summarise(value = mean(lsmean)) %>%
   summarise(rr = value[co2 == "elev"] / value[co2 == "amb"] - 1)
+
+
+# . pre- & post-CO2 ------------------------------------------------------
+
+# pre-CO2
+fo_s_pre_m1  <- lm(S ~ co2, data = forb_diversity_ind, subset = year == "Year0")
+plot(fo_s_pre_m1)
+Anova(fo_s_pre_m1, test.statistic = "F")
+
+
+# post-CO2
+fo_s_post_m1 <- lmer(S ~ co2 * year + (1|ring), data = forb_diversity_ind, subset = year != "Year0")
+plot(fo_s_post_m1)
+qqPlot(residuals(fo_s_post_m1))
+Anova(fo_s_post_m1, test.statistic = "F")
 
