@@ -99,16 +99,8 @@ plot(gr_j_m1)
 qqPlot(residuals(gr_j_m1))
 
 
-# non-normality of the data is suggested
-gr_j_m2 <- update(gr_j_m1, subset = -which.min(resid(gr_j_m1)))
-plot(gr_j_m2)
-qqPlot(residuals(gr_j_m2))
-
-
 # F test
 Anova(gr_j_m1, test.statistic = "F")
-Anova(gr_j_m2, test.statistic = "F")
-  # not majoer difference so present the first one withought removing the outlier
 
 
 # 95% confidence intervals for covariate-adjusted means
