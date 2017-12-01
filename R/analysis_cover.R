@@ -251,8 +251,10 @@ plot(sc4_m1)
 Anova(sc4_m1, test.statistic = "F")
 
 
-# 95% confidence intervals for covariate-adjusted means
+# pairwise comparison and 95% confidence intervals for covariate-adjusted means
 sc4_lsmean <- lsmeans::lsmeans(sc4_m1, ~ co2 | year, type = "response")
+summary(pairs(sc4_lsmean)[1:3], adjust = "none")
+
 sc4_95CI   <- data.frame(summary(sc4_lsmean))
 sc4_95CI
 
@@ -315,8 +317,10 @@ qqPlot(resid(sd_m1))
 Anova(sd_m1, test.statistic = "F")
 
 
-# 95% confidence intervals for covariate-adjusted means
+# pairwise comparison and 95% confidence intervals for covariate-adjusted means
 sdr_lsmean <- lsmeans::lsmeans(sd_m1, ~ co2 | year, type = "response")
+summary(pairs(sdr_lsmean)[1:3], adjust = "none")
+
 sdr_95CI   <- data.frame(summary(sdr_lsmean))
 sdr_95CI
 
