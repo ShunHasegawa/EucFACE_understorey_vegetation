@@ -80,6 +80,11 @@ summary(gr_h_lsmean)
 
 # CO2 response ratios (RR) on covariate-adjusted means
 data.frame(summary(gr_h_lsmean)) %>% 
+  select(co2, year, lsmean) %>% 
+  spread(co2, lsmean) %>% 
+  mutate(rr = elev / amb - 1)
+
+data.frame(summary(gr_h_lsmean)) %>% 
   group_by(co2) %>% 
   summarise(value = mean(lsmean)) %>%
   summarise(rr = value[co2 == "elev"] / value[co2 == "amb"] - 1)
@@ -110,6 +115,11 @@ summary(gr_j_lsmean)
 
 # CO2 response ratios (RR) on covariate-adjusted means
 data.frame(summary(gr_j_lsmean)) %>% 
+  select(co2, year, lsmean) %>% 
+  spread(co2, lsmean) %>% 
+  mutate(rr = elev / amb - 1)
+
+data.frame(summary(gr_j_lsmean)) %>% 
   group_by(co2) %>% 
   summarise(value = mean(lsmean)) %>%
   summarise(rr = value[co2 == "elev"] / value[co2 == "amb"] - 1)
@@ -139,6 +149,12 @@ summary(gr_s_lsmean)
 
 
 # CO2 response ratios (RR) on covariate-adjusted means
+data.frame(summary(gr_s_lsmean)) %>% 
+  select(co2, year, response) %>% 
+  spread(co2, response) %>% 
+  mutate(rr = elev / amb - 1)
+
+
 data.frame(summary(gr_s_lsmean)) %>% 
   group_by(co2) %>% 
   summarise(value = mean(response)) %>%

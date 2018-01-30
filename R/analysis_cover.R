@@ -168,6 +168,12 @@ dc3_95CI
 
 # CO2 response ratios (RR) on covariate-adjusted means
 dc3_95CI %>% 
+  select(co2, year, lsmean) %>% 
+  spread(co2, lsmean) %>% 
+  mutate(rr = elev / amb - 1)
+
+
+dc3_95CI %>% 
   group_by(co2) %>% 
   summarise(value = mean(lsmean)) %>%
   summarise(rr = value[co2 == "elev"] / value[co2 == "amb"] - 1)
@@ -196,6 +202,12 @@ dc4_95CI
 
 
 # CO2 response ratios (RR) on covariate-adjusted means
+dc4_95CI %>% 
+  select(co2, year, response) %>% 
+  spread(co2, response) %>% 
+  mutate(rr = elev / amb - 1)
+
+
 dc4_95CI %>% 
   group_by(co2) %>% 
   summarise(value = mean(response)) %>%
@@ -227,6 +239,12 @@ sc3_95CI
 
 
 # CO2 response ratios (RR) on covariate-adjusted means
+sc3_95CI %>% 
+  select(co2, year, lsmean) %>% 
+  spread(co2, lsmean) %>% 
+  mutate(rr = elev / amb - 1)
+
+
 sc3_95CI %>% 
   group_by(co2) %>% 
   summarise(value = mean(lsmean)) %>%
@@ -261,6 +279,12 @@ sc4_95CI
 
 # CO2 response ratios (RR) on covariate-adjusted means
 sc4_95CI %>% 
+  select(co2, year, response) %>% 
+  spread(co2, response) %>% 
+  mutate(rr = elev / amb - 1)
+
+
+sc4_95CI %>% 
   group_by(co2) %>% 
   summarise(value = mean(response)) %>%
   summarise(rr = value[co2 == "elev"] / value[co2 == "amb"] - 1)
@@ -294,6 +318,12 @@ c43r_95CI
 
 # CO2 response ratios (RR) on covariate-adjusted means
 c43r_95CI %>% 
+  select(co2, year, response) %>% 
+  spread(co2, response) %>% 
+  mutate(rr = elev / amb - 1)
+
+
+c43r_95CI %>% 
   group_by(co2) %>% 
   summarise(value = mean(response)) %>%
   summarise(rr = value[co2 == "elev"] / value[co2 == "amb"] - 1)
@@ -326,6 +356,12 @@ sdr_95CI
 
 
 # CO2 response ratios (RR) on covariate-adjusted means
+sdr_95CI %>% 
+  select(co2, year, response) %>% 
+  spread(co2, response) %>% 
+  mutate(rr = elev / amb - 1)
+
+
 sdr_95CI %>% 
   group_by(co2) %>% 
   summarise(value = mean(response)) %>%
