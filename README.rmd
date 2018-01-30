@@ -1,14 +1,14 @@
 ---
-title: "Supporting information for Hasegawa et al."
+title: "EucFACE_understorey_vegetation: accepted by Journal of Ecology"
 author: "Shun Hasegawa"
 output: github_document
 ---
 
-This repository stores R scripts to reproduce the results presented in the manuscript below. The raw data will be made publicly available upon acceptance of the manuscript.
+This repository stores R scripts to reproduce the results presented in the manuscript below. The raw data are  publicly available (https://doi.org/10.6084/m9.figshare.5835216.v3).
 
 * Article title: Elevated CO~2~ concentrations reduce C~4~ cover and decrease diversity of understorey plant community in a *Eucalyptus* woodland
 * Authors: Shun Hasegawa, Juan Piñeiro, Raúl Ochoa-Hueso, Kirk L. Barnett, Anthony M. Haigh, Paul D. Rymer, Sally A. Power
-* Article acceptance date:
+* Article acceptance date: 26^th^ January 2018
 
 ## File description
 
@@ -19,10 +19,10 @@ This repository stores R scripts to reproduce the results presented in the manus
 * **analysis_C43r_soilNP.R**: This analyses relationship between C~4~:C~3~ ratios soil N and P availability using multiple regression analysis with annual soil moisture (Moist), understorey temperature (Temp) and photosynthetic active radiation(PAR).
 
 ### Data
-* **graminoid_data.csv**: Cover data of graminoid species
-* **forb_data.csv**: Cover data of forb species
-* **env_data.csv**: Environmental variables (soil moisture, temperature and PAR)
-* **soil_data.csv**: Plant accessible nutrients (ammonium, nitrate and phosphate)
+* **FACE_P0029_RA_UCOMGM_R_201209-201602.csv**: Cover data of graminoid species
+* **FACE_P0029_RA_UCOMFB_R_201209-201602.csv**: Cover data of forb species
+* **Data/FACE_P0029_RA_ENVVARS_L1_201301-201512.csv**: Environmental variables (soil moisture, temperature and PAR)
+* **FACE_P0029_RA_SOILVARS_L1_201311-201602.csv**: Plant accessible nutrients (ammonium, nitrate and phosphate)
 * **graminoid_pfg.csv**: Table of graminoid species and corresponding plant functional types
 * **metadata.csv**: Description of the variables in the data above
 

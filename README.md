@@ -1,12 +1,12 @@
-Supporting information for Hasegawa et al.
+EucFACE\_understorey\_vegetation: accepted by Journal of Ecology
 ================
 Shun Hasegawa
 
-This repository stores R scripts to reproduce the results presented in the manuscript below. The raw data will be made publicly available upon acceptance of the manuscript.
+This repository stores R scripts to reproduce the results presented in the manuscript below. The raw data are publicly available (<https://doi.org/10.6084/m9.figshare.5835216.v3>).
 
 -   Article title: Elevated CO<sub>2</sub> concentrations reduce C<sub>4</sub> cover and decrease diversity of understorey plant community in a *Eucalyptus* woodland
 -   Authors: Shun Hasegawa, Juan Piñeiro, Raúl Ochoa-Hueso, Kirk L. Barnett, Anthony M. Haigh, Paul D. Rymer, Sally A. Power
--   Article acceptance date:
+-   Article acceptance date: 26<sup>th</sup> January 2018
 
 File description
 ----------------
@@ -20,10 +20,10 @@ File description
 
 ### Data
 
--   **graminoid\_data.csv**: Cover data of graminoid species
--   **forb\_data.csv**: Cover data of forb species
--   **env\_data.csv**: Environmental variables (soil moisture, temperature and PAR)
--   **soil\_data.csv**: Plant accessible nutrients (ammonium, nitrate and phosphate)
+-   **FACE\_P0029\_RA\_UCOMGM\_R\_201209-201602.csv**: Cover data of graminoid species
+-   **FACE\_P0029\_RA\_UCOMFB\_R\_201209-201602.csv**: Cover data of forb species
+-   **Data/FACE\_P0029\_RA\_ENVVARS\_L1\_201301-201512.csv**: Environmental variables (soil moisture, temperature and PAR)
+-   **FACE\_P0029\_RA\_SOILVARS\_L1\_201311-201602.csv**: Plant accessible nutrients (ammonium, nitrate and phosphate)
 -   **graminoid\_pfg.csv**: Table of graminoid species and corresponding plant functional types
 -   **metadata.csv**: Description of the variables in the data above
 
@@ -34,7 +34,7 @@ The results were generated under the R session as detailed below.
 
     ## R version 3.3.3 (2017-03-06)
     ## Platform: x86_64-apple-darwin13.4.0 (64-bit)
-    ## Running under: macOS  10.13.1
+    ## Running under: macOS  10.13.3
     ## 
     ## locale:
     ## [1] en_GB.UTF-8/en_GB.UTF-8/en_GB.UTF-8/C/en_GB.UTF-8/en_GB.UTF-8
