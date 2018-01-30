@@ -188,6 +188,7 @@ data.frame(summary(fo_h_lsmean)) %>%
 
 # pre-CO2
 fo_h_pre_m1  <- lm(H ~ co2, data = forb_diversity_ind, subset = year == "Year0")
+par(mfrow = c(2, 2))
 plot(fo_h_pre_m1)
 Anova(fo_h_pre_m1, test.statistic = "F")
 
@@ -235,6 +236,7 @@ data.frame(summary(fo_j_lsmean)) %>%
 
 # pre-CO2
 fo_j_pre_m1  <- lm(J ~ co2, data = forb_diversity_ind, subset = year == "Year0")
+par(mfrow = c(2, 2))
 plot(fo_j_pre_m1)
 Anova(fo_j_pre_m1, test.statistic = "F")
 
@@ -280,6 +282,7 @@ data.frame(summary(fo_s_lsmean)) %>%
 # . pre- & post-CO2 ------------------------------------------------------
 
 # pre-CO2
+par(mfrow = c(2, 2))
 fo_s_pre_m1  <- lm(S ~ co2, data = forb_diversity_ind, subset = year == "Year0")
 plot(fo_s_pre_m1)
 Anova(fo_s_pre_m1, test.statistic = "F")
