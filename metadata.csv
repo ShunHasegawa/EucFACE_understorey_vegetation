@@ -1,7 +1,7 @@
 filename,variable,unit,description
 FACE_P0029_RA_UCOMGM_R_201209-201602.csv,year,,"Survey year: Year0 was conducted in September and December 2012, Year1 was January 2014, Year2 was January 2015 and Year3 was February 2016."
 FACE_P0029_RA_UCOMGM_R_201209-201602.csv,co2,,CO2 treatment: ambient (amb) and elevated CO2 (elev)
-FACE_P0029_RA_UCOMGM_R_201209-201602.csv,ring,,FACE ring
+FACE_P0029_RA_UCOMGM_R_201209-201602.csv,ring,,"FACE ring: 1, 4 and 5 received eCO2, and 2, 3 and 6 received ambient treatment"
 FACE_P0029_RA_UCOMGM_R_201209-201602.csv,plot,,Plots established within each ring
 FACE_P0029_RA_UCOMGM_R_201209-201602.csv,species names,count plot-1,The number of 10 x 10 cm cells where the species were present per plot (2 x 2 m)
 FACE_P0029_RA_UCOMFB_R_201209-201602.csv,year,,See for FACE_P0029_RA_UCOMGM_R_201209-201602.csv
@@ -9,7 +9,7 @@ FACE_P0029_RA_UCOMFB_R_201209-201602.csv,co2,,See for FACE_P0029_RA_UCOMGM_R_201
 FACE_P0029_RA_UCOMFB_R_201209-201602.csv,ring,,See for FACE_P0029_RA_UCOMGM_R_201209-201602.csv
 FACE_P0029_RA_UCOMFB_R_201209-201602.csv,plot,,See for FACE_P0029_RA_UCOMGM_R_201209-201602.csv
 FACE_P0029_RA_UCOMFB_R_201209-201602.csv,species names,count plot-1,See for FACE_P0029_RA_UCOMGM_R_201209-201602.csv
-FACE_P0029_RA_ENVVARS_L1_201301-201512.csv,year,,"Corresponding survey years for annual means of environmental variables. The means in 2013, 2014 and 2015 are for the surveys in Year1, Year2 and Year3, respectively. Also see Year for graminoid_data.csv"
+FACE_P0029_RA_ENVVARS_L1_201301-201512.csv,year,,"Corresponding survey years for annual means of environmental variables. The means in 2013, 2014 and 2015 are for the surveys in Year1, Year2 and Year3, respectively. Also see Year for FACE_P0029_RA_UCOMGM_R_201209-201602.csv"
 FACE_P0029_RA_ENVVARS_L1_201301-201512.csv,co2,,See for FACE_P0029_RA_UCOMGM_R_201209-201602.csv
 FACE_P0029_RA_ENVVARS_L1_201301-201512.csv,ring,,See for FACE_P0029_RA_UCOMGM_R_201209-201602.csv
 FACE_P0029_RA_ENVVARS_L1_201301-201512.csv,Moist,,Annual mean of soil moisture (soil volumetric water content) at a depth of 5-25 cm
@@ -17,7 +17,7 @@ FACE_P0029_RA_ENVVARS_L1_201301-201512.csv,Temp,degree celcious,Annual mean of u
 FACE_P0029_RA_ENVVARS_L1_201301-201512.csv,PAR,micromol s-1 m-2,Annual mean of understorey photosynthetically active radiation at 2 m above the ground
 graminoid_pfg.csv,variable,,Species names
 graminoid_pfg.csv,pfg,,Plant functional groups: C3 and C4
-FACE_P0029_RA_SOILVARS_L1_201311-201602.csv,year,,"Corresponding survey years for annual means of soil nutrients. The means between November and subsequent February in 2014, 2015 and 2016 are for the surveys in Year1, Year2 and Year3, respectively. Also see Year for graminoid_data.csv"
+FACE_P0029_RA_SOILVARS_L1_201311-201602.csv,year,,"Corresponding survey years for annual means of soil nutrients. The means between November and subsequent February in 2014, 2015 and 2016 are for the surveys in Year1, Year2 and Year3, respectively. Also see Year for FACE_P0029_RA_UCOMGM_R_201209-201602.csv"
 FACE_P0029_RA_SOILVARS_L1_201311-201602.csv,ring,,See for FACE_P0029_RA_UCOMGM_R_201209-201602.csv
 FACE_P0029_RA_SOILVARS_L1_201311-201602.csv,nitrate,ng cm-2 d-1,Plant accessible nitrate measured using ion exchange resin membrane
 FACE_P0029_RA_SOILVARS_L1_201311-201602.csv,ammonium,ng cm-2 d-1,Plant accessible nitrate measured using ion exchange resin membrane
