@@ -22,7 +22,7 @@ File description
 
 -   **FACE\_P0029\_RA\_UCOMGM\_R\_201209-201602.csv**: Cover data of graminoid species
 -   **FACE\_P0029\_RA\_UCOMFB\_R\_201209-201602.csv**: Cover data of forb species
--   **Data/FACE\_P0029\_RA\_ENVVARS\_L1\_201301-201512.csv**: Environmental variables (soil moisture, temperature and PAR)
+-   **FACE\_P0029\_RA\_ENVVARS\_L1\_201301-201512.csv**: Environmental variables (soil moisture, temperature and PAR)
 -   **FACE\_P0029\_RA\_SOILVARS\_L1\_201311-201602.csv**: Plant accessible nutrients (ammonium, nitrate and phosphate)
 -   **graminoid\_pfg.csv**: Table of graminoid species and corresponding plant functional types
 -   **metadata.csv**: Description of the variables in the data above

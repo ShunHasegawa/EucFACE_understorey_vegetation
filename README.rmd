@@ -21,7 +21,7 @@ This repository stores R scripts to reproduce the results presented in the manus
 ### Data
 * **FACE_P0029_RA_UCOMGM_R_201209-201602.csv**: Cover data of graminoid species
 * **FACE_P0029_RA_UCOMFB_R_201209-201602.csv**: Cover data of forb species
-* **Data/FACE_P0029_RA_ENVVARS_L1_201301-201512.csv**: Environmental variables (soil moisture, temperature and PAR)
+* **FACE_P0029_RA_ENVVARS_L1_201301-201512.csv**: Environmental variables (soil moisture, temperature and PAR)
 * **FACE_P0029_RA_SOILVARS_L1_201311-201602.csv**: Plant accessible nutrients (ammonium, nitrate and phosphate)
 * **graminoid_pfg.csv**: Table of graminoid species and corresponding plant functional types
 * **metadata.csv**: Description of the variables in the data above
